@@ -1,0 +1,2 @@
+# bruno-eurder
+This project is called eurder for örder and is implemented for training purpose. More information is available at https://github.com/switchfully/track-shared/tree/master/60-projects/30-order
