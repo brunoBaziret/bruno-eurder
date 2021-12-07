@@ -4,7 +4,7 @@ import com.switchfully.brunoeurder.domain.customer.Address;
 import com.switchfully.brunoeurder.domain.customer.Customer;
 import com.switchfully.brunoeurder.domain.customer.CustomerDto;
 import com.switchfully.brunoeurder.domain.mapper.CustomerMapper;
-import com.switchfully.brunoeurder.repository.CustomerRepository;
+import com.switchfully.brunoeurder.repository.customer.CustomerRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

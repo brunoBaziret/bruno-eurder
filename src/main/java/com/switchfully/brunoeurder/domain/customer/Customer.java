@@ -1,7 +1,5 @@
 package com.switchfully.brunoeurder.domain.customer;
 
-import com.switchfully.brunoeurder.repository.CustomerRepository;
-
 import java.util.Objects;
 import java.util.UUID;
 
@@ -13,7 +11,6 @@ public class Customer {
     private final String email;
     private final Address address;
     private final String phoneNumber;
-    private CustomerRepository customerRepository;
 
     public Customer(String firstName, String lastName, String email, Address address, String phoneNumber) {
         this.customerUniqueID = UUID.randomUUID().toString();

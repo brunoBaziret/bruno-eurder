@@ -1,4 +1,4 @@
-package com.switchfully.brunoeurder.repository;
+package com.switchfully.brunoeurder.repository.customer;
 
 import com.switchfully.brunoeurder.domain.customer.Customer;
 import org.springframework.stereotype.Repository;
