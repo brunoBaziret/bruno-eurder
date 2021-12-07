@@ -1,4 +1,4 @@
-package com.switchfully.brunoeurder;
+package com.switchfully.brunoeurder.customer;
 
 import com.switchfully.brunoeurder.domain.customer.Address;
 import com.switchfully.brunoeurder.domain.customer.Customer;
@@ -21,7 +21,7 @@ public class CustomerTest {
                 .setFirstName("Albert")
                 .setLastName("Einstein")
                 .setEmail("albert@einstein.com")
-                .setAddress(new Address("Mercer Street", "112", "New Jersey", "08544", "USA"))
+                .setAddress(new Address("Mercer Street", "112", "08544, NJ", "Princeton", "USA"))
                 .setPhoneNumber("+1 609-258-3000");
 
         Customer expected = new CustomerMapper().mapToCustomer(customerDto);
