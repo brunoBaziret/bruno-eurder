@@ -49,7 +49,7 @@ public class UserController {
 
     @GetMapping(path = "{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUSer (@PathVariable("id") String id,@RequestHeader(required = false) String authorization ) {
+    public UserDto getUser(@PathVariable("id") String id, @RequestHeader(required = false) String authorization ) {
         logger.info("Method 'getUser' started");
         User user = userService.getUser(id);
         UserDto userDto= userMapper.mapToUserDto(user);

@@ -6,10 +6,10 @@ import java.util.UUID;
 public class Item {
 
     private final String itemUniqueID;
-    private final String itemName;
-    private final String itemDescription;
-    private final Double itemPrice;
-    private final Integer itemStock;
+    private String itemName;
+    private String itemDescription;
+    private Double itemPrice;
+    private Integer itemStock;
 
     public Item(String itemName, String itemDescription, Double itemPrice, Integer itemStock) {
         this.itemUniqueID = UUID.randomUUID().toString();
@@ -37,6 +37,26 @@ public class Item {
 
     public Integer getItemStock() {
         return itemStock;
+    }
+
+    public Item setItemName(String itemName) {
+        this.itemName = itemName;
+        return this;
+    }
+
+    public Item setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+        return this;
+    }
+
+    public Item setItemPrice(Double itemPrice) {
+        this.itemPrice = itemPrice;
+        return this;
+    }
+
+    public Item setItemStock(Integer itemStock) {
+        this.itemStock = itemStock;
+        return this;
     }
 
     @Override

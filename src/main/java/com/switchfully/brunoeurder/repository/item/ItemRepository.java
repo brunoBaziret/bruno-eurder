@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Repository
 public class ItemRepository {
@@ -21,6 +22,15 @@ public class ItemRepository {
 
     public List<Item> getItemList() {
         return itemList;
+    }
+
+    public Item getItemById(String id) {
+        for (Item item : itemList) {
+            if (item.getItemUniqueID().equals(id)) {
+                return item;
+            }
+        }
+        throw new NoSuchElementException("Item not found");
     }
 
     @Override

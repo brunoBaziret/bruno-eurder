@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Component
 public class UserService {
@@ -25,12 +26,11 @@ public class UserService {
     }
 
     public User getUser(String userUniqueID) {
-        List<User> userList = userRepository.getUserList();
-        for (User user : userList) {
+        for (User user : userRepository.getUserList()) {
             if (user.getUserUniqueID().equals(userUniqueID)) {
                 return user;
             }
         }
-        return null;
+        throw new NoSuchElementException("User not found");
     }
 }
