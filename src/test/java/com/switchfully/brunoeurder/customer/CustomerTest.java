@@ -5,33 +5,34 @@ import com.switchfully.brunoeurder.domain.customer.Customer;
 import com.switchfully.brunoeurder.domain.customer.CustomerDto;
 import com.switchfully.brunoeurder.domain.mapper.CustomerMapper;
 import com.switchfully.brunoeurder.repository.customer.CustomerRepository;
+import com.switchfully.brunoeurder.service.customer.CustomerService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import java.util.List;
 
+@SpringBootTest
 public class CustomerTest {
     @Test
-    void givenCustomerInformation_whenCreatingNewCustomerUserAndAddingItToCustomerRepository_thenCustomerRepositoryContainsNewCustomerUser() {
+    void givenCustomerInformation_whenCreatingCustomer_thenCustomerRepositoryContainsCustomer() {
         //GIVEN
-        //Customer information = Albert Einstein, albert@einstein.com, 112 Mercer St, NJ, 08544 USA, +1 609-258-3000
+        Customer expectedCustomer = new Customer(
+                "Albert",
+                "Einstein",
+                "albert@einstein.com",
+                new Address("Mercer Street", "112", "08544, NJ", "Princeton", "USA"),
+                "+1 609-258-3000");
+
+        CustomerRepository customerRepository = new CustomerRepository();
+        CustomerService customerService = new CustomerService(customerRepository);
+
         //WHEN
-        CustomerDto customerDto = new CustomerDto()
-                .setFirstName("Albert")
-                .setLastName("Einstein")
-                .setEmail("albert@einstein.com")
-                .setAddress(new Address("Mercer Street", "112", "08544, NJ", "Princeton", "USA"))
-                .setPhoneNumber("+1 609-258-3000");
-
-        Customer expected = new CustomerMapper().mapToCustomer(customerDto);
-
-        CustomerRepository actual = new CustomerRepository();
-        actual.add(expected);
+        customerService.createCustomer(expectedCustomer);
+        List<Customer> actualCustomerList = customerRepository.getCustomerList();
 
         //THEN
-
-        Assertions.assertThat(actual.getCustomerList()).containsExactly(expected);
+        Assertions.assertThat(actualCustomerList.contains(expectedCustomer));
     }
 
     @Test
@@ -39,7 +40,6 @@ public class CustomerTest {
         //GIVEN Customer information with first name missing (null)
 
         //WHEN, THEN
-
         Assertions.assertThatThrownBy(() -> {
             CustomerDto customerDto = new CustomerDto()
                     .setFirstName(null)

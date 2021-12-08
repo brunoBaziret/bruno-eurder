@@ -4,30 +4,32 @@ import com.switchfully.brunoeurder.domain.item.Item;
 import com.switchfully.brunoeurder.domain.item.ItemDto;
 import com.switchfully.brunoeurder.domain.mapper.ItemMapper;
 import com.switchfully.brunoeurder.repository.item.ItemRepository;
+import com.switchfully.brunoeurder.service.item.ItemService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 public class ItemTest {
     @Test
-    void givenItemInformation_whenCreatingNewItemAndAddingItToItemRepository_thenItemRepositoryContainsNewItem() {
+    void givenItemInformation_whenCreatingItem_thenItemRepositoryContainsNewItem() {
         //GIVEN
-        //Item information = Rega Rp78, Turntable for 78 RPM Records, 699,-EUR, 7 pieces
+        Item expectedItem = new Item(
+                "Rega RP78",
+                "Turntable for 78 RPM Records",
+                699.0,
+                7);
+        ItemRepository itemRepository = new ItemRepository();
+        ItemService itemService = new ItemService(itemRepository);
 
         //WHEN
-        ItemDto itemDto= new ItemDto()
-                .setItemName("Rega RP78")
-                .setItemDescription("Turntable for 78 RPM Records")
-                .setItemPrice(699)
-                .setItemStock(7);
-        Item expected = new ItemMapper().mapToItem(itemDto);
-        ItemRepository actual = new ItemRepository();
-        actual.add(expected);
-        System.out.println(actual);
+        itemService.addItem(expectedItem);
+        List<Item> actualItemList = itemRepository.getItemList();
 
         //THEN
-        Assertions.assertThat(actual.getItemList()).containsExactly(expected);
+        Assertions.assertThat(actualItemList.contains(expectedItem));
     }
 
     @Test
@@ -36,7 +38,7 @@ public class ItemTest {
 
         //WHEN, THEN
         Assertions.assertThatThrownBy(() -> {
-            ItemDto itemDto= new ItemDto()
+            ItemDto itemDto = new ItemDto()
                     .setItemName(null)
                     .setItemDescription("Turntable for 78 RPM Records")
                     .setItemPrice(699)

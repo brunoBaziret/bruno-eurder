@@ -66,7 +66,7 @@ public class CustomerDto {
 
     @Override
     public String toString() {
-        return "Record for customer " + getCustomerUniqueID() +
+        return "Record for customer " +
                 ":\n" + "Name: " + getFirstName()+ " " + getLastName() +
                 ":\n" + "email: " + getEmail() +
                 ":\n" + "Address: " + getAddress() +

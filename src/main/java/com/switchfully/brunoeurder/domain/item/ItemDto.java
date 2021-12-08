@@ -55,7 +55,7 @@ public class ItemDto {
 
     @Override
     public String toString() {
-        return"Record for iem " + getItemUniqueID() +
+        return"Record for item " + getItemUniqueID() +
                 ":\n" + "Name: " + getItemName() +
                 ":\n" + "Description: " + getItemDescription() +
                 ":\n" + "Price: " + getItemPrice() + "€" +
