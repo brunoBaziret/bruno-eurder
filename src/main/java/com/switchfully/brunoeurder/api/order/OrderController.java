@@ -28,7 +28,7 @@ public class OrderController {
     public void placeOrder(@RequestBody OrderDto orderDto, @RequestHeader(required = false) String authorization) {
         logger.info("Method 'placeOrder' started");
         Order order = orderMapper.mapToOrder(orderDto);
-        orderService.placeOrder(order);
+        orderService.saveOrder(order);
         logger.info("Method 'placeOrder' finished");
     }
 }

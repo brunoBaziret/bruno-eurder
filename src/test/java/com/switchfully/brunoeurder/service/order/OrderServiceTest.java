@@ -1,10 +1,9 @@
-package com.switchfully.brunoeurder.order;
+package com.switchfully.brunoeurder.service.order;
 
 import com.switchfully.brunoeurder.domain.item.Item;
 import com.switchfully.brunoeurder.domain.itemGroup.ItemGroup;
 import com.switchfully.brunoeurder.domain.order.Order;
 import com.switchfully.brunoeurder.repository.order.OrderRepository;
-import com.switchfully.brunoeurder.service.order.OrderService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,8 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-public class OrderTest {
+class OrderServiceTest {
+
 
     @Test
     void givenItemGroupList_whenCreatingOrderWithItemGroupList_thenOrderContainsExactlyItemGroupList() {
@@ -37,14 +38,14 @@ public class OrderTest {
         itemGroupList.add(expectedItemGroup2);
 
         //WHEN
-        Order actualOrder = new Order(itemGroupList, item1.getItemPrice() + item2.getItemPrice());
+        Order actualOrder = new Order(itemGroupList);
 
         //THEN
         Assertions.assertThat(actualOrder.getItemGroup()).containsAnyOf(expectedItemGroup1, expectedItemGroup2);
     }
 
     @Test
-    void givenOrder_whenPlacingOrder_thenOrderIsAddedToOrderRepository() {
+    void givenOrder_whenSavingOrder_thenOrderIsAddedToOrderRepository() {
         //GIVEN
         Item item1 = new Item(
                 "Rega RP78",
@@ -64,12 +65,12 @@ public class OrderTest {
         itemGroupList.add(itemGroup1);
         itemGroupList.add(itemGroup2);
 
-        Order expectedOrder = new Order(itemGroupList, item1.getItemPrice() + item2.getItemPrice());
+        Order expectedOrder = new Order(itemGroupList);
         OrderRepository orderRepository = new OrderRepository();
         OrderService orderService = new OrderService(orderRepository);
 
         //WHEN
-        orderService.placeOrder(expectedOrder);
+        orderService.saveOrder(expectedOrder);
         List<Order> actualOrderList = orderRepository.getOrderList();
 
         //THEN
@@ -77,7 +78,7 @@ public class OrderTest {
     }
 
     @Test
-    void givenOrder_whenCalculatingPrice_thenPriceEqualsSpecifiedAmount () {
+    void givenOrder_whenCalculatingPrice_thenPriceEqualsSpecifiedAmount() {
         //GIVEN
         Item item1 = new Item(
                 "Rega RP78",
@@ -96,15 +97,14 @@ public class OrderTest {
         List<ItemGroup> itemGroupList = new ArrayList<>();
         itemGroupList.add(itemGroup1);
         itemGroupList.add(itemGroup2);
-
-        Order order = new Order(itemGroupList, item1.getItemPrice() + item2.getItemPrice());
-        OrderRepository orderRepository = new OrderRepository();
-        OrderService orderService = new OrderService(orderRepository);
+        Double expectedOrderPrice = 100000000 + 2 * 699.0;
 
         //WHEN
-        orderService.placeOrder(order);
-        List<Order> actualOrderList = orderRepository.getOrderList();
+        Order order = new Order(itemGroupList);
 
-
+        //THEN
+        Double actualOrderPrice = order.getOrderPrice(itemGroupList);
+        org.junit.jupiter.api.Assertions.assertEquals(expectedOrderPrice,actualOrderPrice);
     }
+
 }

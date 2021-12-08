@@ -1,4 +1,4 @@
-package com.switchfully.brunoeurder.api.customer;
+package com.switchfully.brunoeurder.api.user;
 
 import com.switchfully.brunoeurder.domain.customer.Customer;
 import com.switchfully.brunoeurder.domain.customer.CustomerDto;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/customers")
 
-public class CustomerController {
+public class UserController {
 
     private final CustomerService customerService;
     private final CustomerMapper customerMapper;
-    private final Logger logger = LoggerFactory.getLogger(CustomerController.class);
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    public CustomerController(CustomerService customerService, CustomerMapper customerMapper) {
+    public UserController(CustomerService customerService, CustomerMapper customerMapper) {
         this.customerService = customerService;
         this.customerMapper = customerMapper;
     }
@@ -28,7 +28,7 @@ public class CustomerController {
     public void CreateCustomerAccount(@RequestBody CustomerDto customerDto, @RequestHeader(required = false) String authorization) {
         logger.info("Method 'createCustomerAccount' started");
         Customer customer = customerMapper.mapToCustomer(customerDto);
-        customerService.createCustomer(customer);
+        customerService.saveCustomer(customer);
         logger.info("Method 'createCustomerAccount' finished");
     }
 }

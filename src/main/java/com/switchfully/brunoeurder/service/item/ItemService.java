@@ -16,7 +16,7 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
-    public void addItem(Item item) {
+    public void saveItem(Item item) {
         itemRepository.add(item);
     }
 }

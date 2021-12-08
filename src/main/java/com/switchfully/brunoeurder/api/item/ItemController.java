@@ -28,7 +28,7 @@ public class ItemController {
     public void addItem(@RequestBody ItemDto itemDto, @RequestHeader(required = false) String authorization) {
         logger.info("Method 'addItem' started");
         Item item = itemMapper.mapToItem(itemDto);
-        itemService.addItem(item);
+        itemService.saveItem(item);
         logger.info("Method 'addItem' finished");
     }
 }

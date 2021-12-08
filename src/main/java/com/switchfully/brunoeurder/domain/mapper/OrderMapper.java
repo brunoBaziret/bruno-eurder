@@ -14,8 +14,6 @@ public class OrderMapper {
     }
 
     public Order mapToOrder(OrderDto orderDto) {
-        return new Order(
-                orderDto.getItemGroup(),
-                orderDto.getOrderPrice());
+        return new Order(orderDto.getItemGroup());
     }
 }

@@ -21,15 +21,7 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public void placeOrder(Order order) {
+    public void saveOrder(Order order) {
         orderRepository.add(order);
     }
-
-//    public Double calculatePrice(Order order) {
-//        Double totalOrderPrice = 0.0;
-//        for (Item item : itemRepository.getItemList()) {
-//            totalOrderPrice += item.getItemPrice() * itemGroup.getQtyOrdered();
-//        }
-//        return totalOrderPrice;
-//    }
 }

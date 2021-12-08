@@ -14,7 +14,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public void createCustomer(Customer customer) {
+    public void saveCustomer(Customer customer) {
         customerRepository.add(customer);
     }
 }
