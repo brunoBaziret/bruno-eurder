@@ -20,7 +20,7 @@ public class ItemController {
 
     private final ItemService itemService;
     private final ItemMapper itemMapper;
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
     private final Logger logger = LoggerFactory.getLogger(ItemController.class);
 
     public ItemController(ItemService itemService, ItemMapper itemMapper, ItemRepository itemRepository) {
