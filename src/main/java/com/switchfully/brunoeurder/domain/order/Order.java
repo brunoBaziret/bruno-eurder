@@ -9,13 +9,13 @@ import java.util.UUID;
 public class Order {
 
     private final String orderUniqueID;
-    private final String customerUniqueID;
+    private final String userUniqueID;
     private final List<ItemGroup> itemGroup;
     private Double orderPrice;
 
     public Order(List<ItemGroup> itemGroup) {
         this.orderUniqueID = UUID.randomUUID().toString();
-        this.customerUniqueID = UUID.randomUUID().toString();
+        this.userUniqueID = UUID.randomUUID().toString();
         this.itemGroup = Objects.requireNonNull(itemGroup, "Value missing");
         this.orderPrice = getOrderPrice(itemGroup);
     }

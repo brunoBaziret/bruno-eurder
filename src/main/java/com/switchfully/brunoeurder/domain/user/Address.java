@@ -1,4 +1,4 @@
-package com.switchfully.brunoeurder.domain.customer;
+package com.switchfully.brunoeurder.domain.user;
 
 public class Address {
 

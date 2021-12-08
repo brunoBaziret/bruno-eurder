@@ -1,17 +1,17 @@
-package com.switchfully.brunoeurder.domain.customer;
+package com.switchfully.brunoeurder.domain.user;
 
 
-public class CustomerDto {
+public class UserDto {
 
-    private String customerUniqueID;
+    private String userUniqueID;
     private String firstName;
     private String lastName;
     private String email;
     private Address address;
     private String phoneNumber;
 
-    public String getCustomerUniqueID() {
-        return customerUniqueID;
+    public String getUserUniqueID() {
+        return userUniqueID;
     }
 
     public String getFirstName() {
@@ -34,32 +34,32 @@ public class CustomerDto {
         return phoneNumber;
     }
 
-    public CustomerDto setCustomerUniqueID(String customerUniqueID) {
-        this.customerUniqueID = customerUniqueID;
+    public UserDto setUserUniqueID(String userUniqueID) {
+        this.userUniqueID = userUniqueID;
         return this;
     }
 
-    public CustomerDto setFirstName(String firstName) {
+    public UserDto setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
 
-    public CustomerDto setLastName(String lastName) {
+    public UserDto setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
 
-    public CustomerDto setEmail(String email) {
+    public UserDto setEmail(String email) {
         this.email = email;
         return this;
     }
 
-    public CustomerDto setAddress(Address address) {
+    public UserDto setAddress(Address address) {
         this.address = address;
         return this;
     }
 
-    public CustomerDto setPhoneNumber(String phoneNumber) {
+    public UserDto setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
