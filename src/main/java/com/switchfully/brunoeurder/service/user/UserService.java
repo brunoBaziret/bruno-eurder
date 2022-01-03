@@ -27,7 +27,7 @@ public class UserService {
 
     public User getUser(String userUniqueID) {
         for (User user : userRepository.getUserList()) {
-            if (user.getUserUniqueID().equals(userUniqueID)) {
+            if (user.getId().equals(userUniqueID)) {
                 return user;
             }
         }

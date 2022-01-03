@@ -9,7 +9,7 @@ public class UserMapper {
 
     public UserDto mapToUserDto(User user) {
         return new UserDto()
-                .setUserUniqueID(user.getUserUniqueID())
+                .setUserUniqueID(user.getId())
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
                 .setEmail(user.getEmail())
