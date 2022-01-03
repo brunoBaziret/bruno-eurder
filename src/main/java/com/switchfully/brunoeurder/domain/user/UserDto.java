@@ -3,15 +3,15 @@ package com.switchfully.brunoeurder.domain.user;
 
 public class UserDto {
 
-    private String userUniqueID;
+    private String id;
     private String firstName;
     private String lastName;
     private String email;
     private Address address;
     private String phoneNumber;
 
-    public String getUserUniqueID() {
-        return userUniqueID;
+    public String getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -34,8 +34,8 @@ public class UserDto {
         return phoneNumber;
     }
 
-    public UserDto setUserUniqueID(String userUniqueID) {
-        this.userUniqueID = userUniqueID;
+    public UserDto setUserUniqueID(String id) {
+        this.id = id;
         return this;
     }
 
