@@ -1,11 +1,20 @@
 package com.switchfully.brunoeurder.domain.user;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Address {
 
+    @Column(name = "STREET_NAME", nullable = false)
     private  String streetName;
+    @Column(name = "STREET_NUMBER", nullable = false)
     private  String streetNumber;
+    @Column(name = "POSTAL_CODE", nullable = false)
     private  String postalCode;
+    @Column(name = "CITY_NAME", nullable = false)
     private  String cityName;
+    @Column(name = "COUNTRY", nullable = false)
     private  String country;
 
     public Address(String streetName, String streetNumber, String postalCode, String cityName, String country) {
